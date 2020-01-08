@@ -378,7 +378,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
             # Modified for NER
             def metric_fn(label_ids, pred_ids):
                 return {
-                    "loss": tf.metrics.mean_squared_error(labels=label_ids, predictions=pred_ids),
+                    "eval_loss": tf.metrics.mean_squared_error(labels=label_ids, predictions=pred_ids),
                     'accuracy': tf.metrics.accuracy(label_ids, pred_ids),
                     'precision': tf_metrics.precision(label_ids, pred_ids, 11),
                     'recall': tf_metrics.recall(label_ids, pred_ids, 11),
